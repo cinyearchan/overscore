@@ -1,14 +1,13 @@
-var expect = require('expect.js')
-var sinon = require('sinon')
+/* eslint-disable no-undef */
+import { stub } from 'sinon'
+import {
+  isEqual,
+  compose,
+  functionMiddleware,
+  isEqualJSON,
+} from '@overscore/equal'
 
-var isEqual = require('@overscore/equal').isEqual
-var compose = require('@overscore/equal').compose
-var functionMiddleware = require('@overscore/equal').functionMiddleware
-var isEqualJSON = require('@overscore/equal').isEqualJSON
-
-// item.r is return for isEqual
-// item.rj is for isEqualJSON
-var basicList = [
+const basicList = [
   { a: undefined, b: undefined, r: true },
   { a: null, b: null, r: true },
   { a: undefined, b: null, r: false },
@@ -24,7 +23,7 @@ var basicList = [
   { a: /^jsmini$/, b: /^jsmini/, r: false, rj: true },
 ]
 
-var pkgList = [
+const pkgList = [
   { a: new Boolean(true), b: new Boolean(true), r: true },
   { a: new Boolean(true), b: new Boolean(false), r: false },
   { a: new Number(1), b: new Number(1), r: true },
@@ -42,15 +41,17 @@ var pkgList = [
   { a: new Date(), b: new Date(), r: true },
 ]
 
+let setList = []
 if (typeof Set === 'function') {
-  var setList = [
+  setList = [
     { a: new Set([1, 2]), b: new Set([1, 2]), r: true },
     { a: new Set([1, 2]), b: new Set([1, 3]), r: false, rj: true },
   ]
 }
 
+let mapList = []
 if (typeof Map === 'function') {
-  var mapList = [
+  mapList = [
     {
       a: new Map([
         ['a', '1'],
@@ -77,7 +78,7 @@ if (typeof Map === 'function') {
   ]
 }
 
-var complexList = [
+const complexList = [
   { a: [1, 2, 3], b: [1, 2, 3], r: true },
   { a: [1, 2, 3], b: [1, 2, 1], r: false },
   { a: [1, [2, [3]]], b: [1, [2, [3]]], r: true },
@@ -86,126 +87,124 @@ var complexList = [
   { a: { a: { b: { c: 1 } } }, b: { a: { b: { c: 1 } } }, r: true },
 ]
 
-describe('单元测试', function () {
-  this.timeout(10000)
+describe('单元测试', () => {
+  jest.setTimeout(10000)
 
-  describe('isEqual', function () {
-    it('normal', function () {
-      basicList.forEach(function (item) {
-        expect(isEqual(item.a, item.b)).to.equal(item.r)
+  describe('isEqual', () => {
+    it('normal', () => {
+      basicList.forEach((item) => {
+        expect(isEqual(item.a, item.b)).toBe(item.r)
       })
 
-      pkgList.forEach(function (item) {
-        expect(isEqual(item.a, item.b)).to.equal(item.r)
+      pkgList.forEach((item) => {
+        expect(isEqual(item.a, item.b)).toBe(item.r)
       })
 
-      complexList.forEach(function (item) {
-        expect(isEqual(item.a, item.b)).to.equal(item.r)
+      complexList.forEach((item) => {
+        expect(isEqual(item.a, item.b)).toBe(item.r)
       })
 
       if (typeof Set === 'function') {
-        setList.forEach(function (item) {
-          expect(isEqual(item.a, item.b)).to.equal(item.r)
+        setList.forEach((item) => {
+          expect(isEqual(item.a, item.b)).toBe(item.r)
         })
       }
 
       if (typeof Map === 'function') {
-        mapList.forEach(function (item) {
-          expect(isEqual(item.a, item.b)).to.equal(item.r)
+        mapList.forEach((item) => {
+          expect(isEqual(item.a, item.b)).toBe(item.r)
         })
       }
     })
 
-    it('compare', function () {
-      // istanbul 会向空函数中注入代码用于计算代码覆盖率，从而导致 toString() 方法得到错误的结果
-      var stubFunction1 = sinon.stub()
-      var stubFunction2 = sinon.stub()
+    it('compare', () => {
+      const stubFunction1 = stub()
+      const stubFunction2 = stub()
 
-      var a = {
+      const a = {
         a: stubFunction1,
       }
-      var b = {
+      const b = {
         a: stubFunction2,
       }
 
-      expect(isEqual(a, b)).to.equal(false)
+      expect(isEqual(a, b)).toBe(false)
       expect(
-        isEqual(a, b, function (o, v, next) {
+        isEqual(a, b, (o, v, next) => {
           if (typeof o === 'function' && typeof v === 'function') {
             return o.toString() === v.toString()
           }
 
           return next()
         }),
-      ).to.equal(true)
+      ).toBe(true)
     })
 
-    it('functionMiddleware', function () {
-      // istanbul 会向空函数中注入代码用于计算代码覆盖率，从而导致 toString() 方法得到错误的结果
-      var stubFunction1 = sinon.stub()
-      var stubFunction2 = sinon.stub()
-      var a = {
+    it('functionMiddleware', () => {
+      const stubFunction1 = stub()
+      const stubFunction2 = stub()
+      const a = {
         a: stubFunction1,
       }
-      var b = {
+      const b = {
         a: stubFunction2,
       }
 
-      expect(isEqual(a, b)).to.equal(false)
-      expect(isEqual(a, b, functionMiddleware())).to.equal(true)
-      expect(isEqual(a, b, compose(functionMiddleware()))).to.equal(true)
+      expect(isEqual(a, b)).toBe(false)
+      expect(isEqual(a, b, functionMiddleware())).toBe(true)
+      expect(isEqual(a, b, compose(functionMiddleware()))).toBe(true)
     })
   })
 
-  describe('isEqualJSON', function () {
-    it('normal', function () {
-      basicList.forEach(function (item) {
-        expect(isEqualJSON(item.a, item.b)).to.equal(item.rj || item.r)
+  describe('isEqualJSON', () => {
+    it('normal', () => {
+      basicList.forEach((item) => {
+        expect(isEqualJSON(item.a, item.b)).toBe(item.rj || item.r)
       })
 
-      pkgList.forEach(function (item) {
-        expect(isEqualJSON(item.a, item.b)).to.equal(item.rj || item.r)
+      pkgList.forEach((item) => {
+        expect(isEqualJSON(item.a, item.b)).toBe(item.rj || item.r)
       })
 
-      complexList.forEach(function (item) {
-        expect(isEqualJSON(item.a, item.b)).to.equal(item.rj || item.r)
+      complexList.forEach((item) => {
+        expect(isEqualJSON(item.a, item.b)).toBe(item.rj || item.r)
       })
 
       if (typeof Set === 'function') {
-        setList.forEach(function (item) {
-          expect(isEqualJSON(item.a, item.b)).to.equal(item.rj || item.r)
+        setList.forEach((item) => {
+          expect(isEqualJSON(item.a, item.b)).toBe(item.rj || item.r)
         })
       }
 
       if (typeof Map === 'function') {
-        mapList.forEach(function (item) {
-          expect(isEqualJSON(item.a, item.b)).to.equal(item.rj || item.r)
+        mapList.forEach((item) => {
+          expect(isEqualJSON(item.a, item.b)).toBe(item.rj || item.r)
         })
       }
     })
 
-    it('replacer', function () {
-      var a = {
+    it('replacer', () => {
+      const a = {
         a: function a() {
           console.log()
         },
       }
-      var b = {
+      const b = {
         a: function b() {
           console.log()
         },
       }
 
-      expect(isEqualJSON(a, b)).to.equal(true)
+      expect(isEqualJSON(a, b)).toBe(true)
       expect(
-        isEqualJSON(a, b, function (k, v) {
+        isEqualJSON(a, b, (k, v) => {
           if (typeof v === 'function') {
             return v.toString()
           }
 
           return v
         }),
-      ).to.equal(false)
+      ).toBe(false)
     })
   })
 })
