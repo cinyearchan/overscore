@@ -42,6 +42,7 @@
     "@overscore/functional": "workspace:^",
     "@overscore/guid": "workspace:^",
     "@overscore/is": "workspace:^",
+    "@overscore/load": "workspace:^",
     "@overscore/pubsub": "workspace:^",
     "@overscore/querystring": "workspace:^",
     "@overscore/range": "workspace:^",

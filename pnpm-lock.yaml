@@ -63,6 +63,9 @@ importers:
       '@overscore/is':
         specifier: workspace:^
         version: link:packages/is
+      '@overscore/load':
+        specifier: workspace:^
+        version: link:packages/load
       '@overscore/pubsub':
         specifier: workspace:^
         version: link:packages/pubsub
@@ -200,6 +203,15 @@ importers:
       '@overscore/type':
         specifier: workspace:^
         version: link:../type
+
+  packages/load:
+    dependencies:
+      '@overscore/extend':
+        specifier: workspace:^
+        version: link:../extend
+      '@overscore/guid':
+        specifier: workspace:^
+        version: link:../guid
 
   packages/pubsub:
     dependencies:
