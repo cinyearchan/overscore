@@ -12,13 +12,13 @@
     "build:cjs": "pnpm --filter \"./packages/*\" build:cjs",
     "build:esm": "pnpm --filter \"./packages/*\" build:esm",
     "build:umd": "pnpm --filter \"./packages/*\" build:umd",
-    "test": "cross-env NODE_ENV=test nyc mocha",
-    "prepare": "husky install",
     "lint": "eslint packages/**/src/* packages/**/config/* test/*",
     "lint:fix": "pnpm run lint --fix",
     "lint:prettier": "prettier --check .",
+    "test": "cross-env NODE_ENV=test nyc mocha",
     "ci": "commit",
-    "cz": "git-cz"
+    "cz": "git-cz",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",

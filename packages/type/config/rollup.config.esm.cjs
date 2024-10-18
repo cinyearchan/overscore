@@ -1,25 +1,4 @@
-// rollup.config.js
-// ES output
-var common = require('./rollup.cjs')
+const getBaseESMConfig = require('../../../config/rollup.base.esm.cjs')
+const pkg = require('../package.json')
 
-module.exports = {
-  input: 'src/index.js',
-  output: [
-    {
-      file: 'dist/index.esm.js',
-      format: 'es',
-      // When export and export default are not used at the same time, set legacy to true.
-      // legacy: true,
-      banner: common.banner,
-      sourcemap: true,
-    },
-    {
-      file: 'dist/index.mjs',
-      format: 'es',
-      // legacy: true,
-      banner: common.banner,
-      sourcemap: true,
-    },
-  ],
-  plugins: [common.getCompiler()],
-}
+module.exports = getBaseESMConfig(pkg)

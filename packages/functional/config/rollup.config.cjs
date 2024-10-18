@@ -1,19 +1,4 @@
-// rollup.config.js
-// commonjs
-var common = require('./rollup.cjs')
+const getBaseCommonConfig = require('../../../config/rollup.base.common.cjs')
+const pkg = require('../package.json')
 
-module.exports = {
-  input: 'src/index.js',
-  output: [
-    {
-      file: 'dist/index.js',
-      format: 'cjs',
-      // When export and export default are not used at the same time, set legacy to true.
-      // legacy: true,
-      banner: common.banner,
-      sourcemap: true,
-    },
-  ],
-  plugins: [common.getCompiler()],
-  external: common.external,
-}
+module.exports = getBaseCommonConfig(pkg)
