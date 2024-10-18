@@ -1,0 +1,43 @@
+{
+  "name": "@overscore/url",
+  "version": "1.0.0",
+  "description": "",
+  "sideEffects": false,
+  "main": "src/index.js",
+  "module": "src/index.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "clean:module": "rimraf node_modules",
+    "build": "pnpm clean && pnpm build:cjs && pnpm build:esm && pnpm build:umd",
+    "build:cjs": "rollup -c config/rollup.config.cjs",
+    "build:esm": "rollup -c config/rollup.config.esm.cjs",
+    "build:umd": "rollup -c config/rollup.config.umd.cjs"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public",
+    "main": "dist/index.js",
+    "module": "dist/index.esm.js",
+    "exports": {
+      ".": {
+        "import": "./dist/index.mjs",
+        "default": "./dist/index.js"
+      }
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@overscore/querystring": "workspace:^",
+    "@overscore/type": "workspace:^"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "files": [
+    "/dist"
+  ],
+  "packageManager": "pnpm@8.10.5+sha1.4370a069f21873a0ad83c785b8048ed8caf6e6e9"
+}

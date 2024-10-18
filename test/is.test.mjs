@@ -66,5 +66,26 @@ describe('单元测试', function () {
       ).to.equal(true)
       expect(is.isEmptyString(' a ')).to.equal(false)
     })
+
+    it('should use Array.isArray when available', () => {
+      // 确保原生的 Array.isArray 可用
+      expect(is.isArray([])).toBe(true)
+      expect(is.isArray({})).toBe(false)
+    })
+
+    it('should fallback to custom isArray function when Array.isArray is not available', () => {
+      // 保存原生的 Array.isArray
+      const originalIsArray = Array.isArray
+
+      // 将 Array.isArray 设置为 undefined
+      Object.defineProperty(Array, 'isArray', { value: undefined })
+
+      // 测试自定义的 isArray 函数
+      expect(is.isArray([])).toBe(true)
+      expect(is.isArray({})).toBe(false)
+
+      // 恢复原生的 Array.isArray
+      Object.defineProperty(Array, 'isArray', { value: originalIsArray })
+    })
   })
 }, 1000)
