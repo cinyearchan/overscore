@@ -57,6 +57,9 @@ importers:
       '@overscore/functional':
         specifier: workspace:^
         version: link:packages/functional
+      '@overscore/guid':
+        specifier: workspace:^
+        version: link:packages/guid
       '@overscore/is':
         specifier: workspace:^
         version: link:packages/is
@@ -189,6 +192,8 @@ importers:
       '@overscore/type':
         specifier: workspace:^
         version: link:../type
+
+  packages/guid: {}
 
   packages/is:
     dependencies:
