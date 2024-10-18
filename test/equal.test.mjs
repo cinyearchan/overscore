@@ -1,5 +1,4 @@
-/* eslint-disable no-undef */
-import { stub } from 'sinon'
+import { describe, it, expect, vi } from 'vitest'
 import {
   isEqual,
   compose,
@@ -88,7 +87,7 @@ const complexList = [
 ]
 
 describe('单元测试', () => {
-  jest.setTimeout(10000)
+  vi.useFakeTimers()
 
   describe('isEqual', () => {
     it('normal', () => {
@@ -118,8 +117,8 @@ describe('单元测试', () => {
     })
 
     it('compare', () => {
-      const stubFunction1 = stub()
-      const stubFunction2 = stub()
+      const stubFunction1 = vi.fn()
+      const stubFunction2 = vi.fn()
 
       const a = {
         a: stubFunction1,
@@ -141,8 +140,8 @@ describe('单元测试', () => {
     })
 
     it('functionMiddleware', () => {
-      const stubFunction1 = stub()
-      const stubFunction2 = stub()
+      const stubFunction1 = vi.fn()
+      const stubFunction2 = vi.fn()
       const a = {
         a: stubFunction1,
       }
@@ -207,4 +206,4 @@ describe('单元测试', () => {
       ).toBe(false)
     })
   })
-})
+}, 1000)

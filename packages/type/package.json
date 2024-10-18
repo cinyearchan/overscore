@@ -7,6 +7,7 @@
   "module": "src/index.js",
   "scripts": {
     "clean": "rimraf dist",
+    "clean:module": "rimraf node_modules",
     "build": "pnpm clean && pnpm build:cjs && pnpm build:esm && pnpm build:umd",
     "build:cjs": "rollup -c config/rollup.config.cjs",
     "build:esm": "rollup -c config/rollup.config.esm.cjs",
@@ -16,12 +17,12 @@
     "registry": "https://registry.npmjs.org",
     "access": "public",
     "main": "dist/index.js",
-    "module": "dist/index.esm.js"
-  },
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "default": "./dist/index.js"
+    "module": "dist/index.esm.js",
+    "exports": {
+      ".": {
+        "import": "./dist/index.mjs",
+        "default": "./dist/index.js"
+      }
     }
   },
   "keywords": [],

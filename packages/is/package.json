@@ -1,5 +1,5 @@
 {
-  "name": "@overscore/equal",
+  "name": "@overscore/is",
   "version": "1.0.0",
   "description": "",
   "sideEffects": false,
@@ -29,8 +29,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@overscore/type": "workspace:^",
-    "@overscore/functional": "workspace:^"
+    "@overscore/type": "workspace:^"
   },
   "engines": {
     "node": ">=14.0.0",
