@@ -10,6 +10,7 @@
     "jsnext",
     "lasttime",
     "lcov",
-    "nowtime"
+    "nowtime",
+    "unsub"
   ]
 }

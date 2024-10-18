@@ -60,6 +60,9 @@ importers:
       '@overscore/is':
         specifier: workspace:^
         version: link:packages/is
+      '@overscore/pubsub':
+        specifier: workspace:^
+        version: link:packages/pubsub
       '@overscore/querystring':
         specifier: workspace:^
         version: link:packages/querystring
@@ -192,6 +195,15 @@ importers:
       '@overscore/type':
         specifier: workspace:^
         version: link:../type
+
+  packages/pubsub:
+    dependencies:
+      '@overscore/event':
+        specifier: workspace:^
+        version: link:../event
+      '@overscore/is':
+        specifier: workspace:^
+        version: link:../is
 
   packages/querystring:
     dependencies:

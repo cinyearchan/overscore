@@ -41,6 +41,7 @@
     "@overscore/extend": "workspace:^",
     "@overscore/functional": "workspace:^",
     "@overscore/is": "workspace:^",
+    "@overscore/pubsub": "workspace:^",
     "@overscore/querystring": "workspace:^",
     "@overscore/range": "workspace:^",
     "@overscore/type": "workspace:^",
