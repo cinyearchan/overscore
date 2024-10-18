@@ -48,6 +48,9 @@ importers:
       '@overscore/equal':
         specifier: workspace:^
         version: link:packages/equal
+      '@overscore/event':
+        specifier: workspace:^
+        version: link:packages/event
       '@overscore/extend':
         specifier: workspace:^
         version: link:packages/extend
@@ -60,6 +63,9 @@ importers:
       '@overscore/querystring':
         specifier: workspace:^
         version: link:packages/querystring
+      '@overscore/range':
+        specifier: workspace:^
+        version: link:packages/range
       '@overscore/type':
         specifier: workspace:^
         version: link:packages/type
@@ -163,6 +169,12 @@ importers:
         specifier: workspace:^
         version: link:../type
 
+  packages/event:
+    dependencies:
+      '@overscore/is':
+        specifier: workspace:^
+        version: link:../is
+
   packages/extend:
     dependencies:
       '@overscore/is':
@@ -189,6 +201,8 @@ importers:
       '@overscore/type':
         specifier: workspace:^
         version: link:../type
+
+  packages/range: {}
 
   packages/type: {}
 
