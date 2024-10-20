@@ -42,45 +42,9 @@ importers:
       '@commitlint/prompt-cli':
         specifier: ^16.3.0
         version: 16.3.0
-      '@overscore/clone':
+      '@overscore/utils':
         specifier: workspace:^
-        version: link:packages/clone
-      '@overscore/equal':
-        specifier: workspace:^
-        version: link:packages/equal
-      '@overscore/event':
-        specifier: workspace:^
-        version: link:packages/event
-      '@overscore/extend':
-        specifier: workspace:^
-        version: link:packages/extend
-      '@overscore/functional':
-        specifier: workspace:^
-        version: link:packages/functional
-      '@overscore/guid':
-        specifier: workspace:^
-        version: link:packages/guid
-      '@overscore/is':
-        specifier: workspace:^
-        version: link:packages/is
-      '@overscore/load':
-        specifier: workspace:^
-        version: link:packages/load
-      '@overscore/pubsub':
-        specifier: workspace:^
-        version: link:packages/pubsub
-      '@overscore/querystring':
-        specifier: workspace:^
-        version: link:packages/querystring
-      '@overscore/range':
-        specifier: workspace:^
-        version: link:packages/range
-      '@overscore/type':
-        specifier: workspace:^
-        version: link:packages/type
-      '@overscore/url':
-        specifier: workspace:^
-        version: link:packages/url
+        version: link:packages/utils
       '@pnpm/find-workspace-packages':
         specifier: ^6.0.9
         version: 6.0.9(@pnpm/logger@5.2.0)
@@ -160,89 +124,7 @@ importers:
         specifier: ^2.1.3
         version: 2.1.3(@types/node@22.7.6)
 
-  packages/clone:
-    dependencies:
-      '@overscore/is':
-        specifier: workspace:^
-        version: link:../is
-      '@overscore/type':
-        specifier: workspace:^
-        version: link:../type
-
-  packages/equal:
-    dependencies:
-      '@overscore/functional':
-        specifier: workspace:^
-        version: link:../functional
-      '@overscore/type':
-        specifier: workspace:^
-        version: link:../type
-
-  packages/event:
-    dependencies:
-      '@overscore/is':
-        specifier: workspace:^
-        version: link:../is
-
-  packages/extend:
-    dependencies:
-      '@overscore/is':
-        specifier: workspace:^
-        version: link:../is
-
-  packages/functional:
-    dependencies:
-      '@overscore/type':
-        specifier: workspace:^
-        version: link:../type
-
-  packages/guid: {}
-
-  packages/is:
-    dependencies:
-      '@overscore/type':
-        specifier: workspace:^
-        version: link:../type
-
-  packages/load:
-    dependencies:
-      '@overscore/extend':
-        specifier: workspace:^
-        version: link:../extend
-      '@overscore/guid':
-        specifier: workspace:^
-        version: link:../guid
-
-  packages/pubsub:
-    dependencies:
-      '@overscore/event':
-        specifier: workspace:^
-        version: link:../event
-      '@overscore/is':
-        specifier: workspace:^
-        version: link:../is
-
-  packages/querystring:
-    dependencies:
-      '@overscore/extend':
-        specifier: workspace:^
-        version: link:../extend
-      '@overscore/type':
-        specifier: workspace:^
-        version: link:../type
-
-  packages/range: {}
-
-  packages/type: {}
-
-  packages/url:
-    dependencies:
-      '@overscore/querystring':
-        specifier: workspace:^
-        version: link:../querystring
-      '@overscore/type':
-        specifier: workspace:^
-        version: link:../type
+  packages/utils: {}
 
 packages:
 

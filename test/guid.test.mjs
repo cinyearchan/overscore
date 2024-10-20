@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { Guid, guid, uuid } from '@overscore/guid'
+import { Guid, guid, uuid } from '@overscore/utils/guid'
 
 describe('单元测试', () => {
   describe('Guid', () => {

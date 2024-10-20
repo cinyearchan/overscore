@@ -1,10 +1,7 @@
 import { describe, it, expect, vi } from 'vitest'
-import {
-  isEqual,
-  compose,
-  functionMiddleware,
-  isEqualJSON,
-} from '@overscore/equal'
+import { isEqual, isEqualJSON } from '@overscore/utils/equal'
+import { compose } from '@overscore/utils/functional'
+import { functionMiddleware } from '@overscore/utils/middleware'
 
 const basicList = [
   { a: undefined, b: undefined, r: true },

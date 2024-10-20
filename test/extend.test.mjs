@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { assign, extend, extendDeep } from '@overscore/extend'
+import { assign, extend, extendDeep } from '@overscore/utils/extend'
 
 describe('单元测试', () => {
   const a = { a: 1 }

@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
-import { isArray } from '@overscore/is'
-import { EventEmitter, eventCenter } from '@overscore/event'
+import { isArray } from '@overscore/utils/is'
+import { EventEmitter, eventCenter } from '@overscore/utils/event'
 
 function noop() {}
 

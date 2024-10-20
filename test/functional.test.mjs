@@ -6,7 +6,7 @@ import {
   curryRight,
   debounce,
   throttle,
-} from '@overscore/functional'
+} from '@overscore/utils/functional'
 
 describe('单元测试', () => {
   vi.useFakeTimers()

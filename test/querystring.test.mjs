@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { parse, stringify } from '@overscore/querystring'
+import { parseQs as parse, stringify } from '@overscore/utils/querystring'
 
 describe('单元测试', () => {
   describe('parse', () => {

@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest'
-import { loadjs } from '@overscore/load'
+import { loadjs } from '@overscore/utils/load'
 
 describe('loadjs', () => {
   it('should load a script successfully', (done) => {

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import * as is from '@overscore/is'
+import * as is from '@overscore/utils/is'
 
 describe('单元测试', function () {
   describe('功能', function () {

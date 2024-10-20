@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import * as base from '@overscore/pubsub'
+import * as base from '@overscore/utils/pubsub'
 
 describe('单元测试', function () {
   describe('触发订阅', () => {

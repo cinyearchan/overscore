@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { range } from '@overscore/range'
+import { range } from '@overscore/utils/range'
 
 describe('unit test', () => {
   describe('number range', () => {

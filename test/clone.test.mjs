@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { clone, cloneJSON, cloneLoop, cloneForce } from '@overscore/clone'
+import { clone, cloneJSON, cloneLoop, cloneForce } from '@overscore/utils/clone'
 
 describe('单元测试', () => {
   // 简单值

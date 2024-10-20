@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { parse, format } from '@overscore/url'
+import { parse, format } from '@overscore/utils/url'
 
 describe('单元测试', () => {
   describe('parse', () => {

@@ -1,6 +1,6 @@
 // test/type.test.mjs
-import { type } from '@overscore/type'
 import { describe, it, expect, vi } from 'vitest'
+import { type } from '@overscore/utils/type'
 
 describe('单元测试', () => {
   // vi.setTimeout(1000)
