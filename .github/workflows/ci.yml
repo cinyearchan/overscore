@@ -27,9 +27,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18.x'
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run lint
+          cache: 'pnpm'
+      - run: pnpm ci
+      - run: pnpm run lint
 
   test:
     needs: lint
@@ -44,8 +44,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-      - run: npm i
-      - run: npm test
-      # - run: npm run coveralls --if-present
-      - run: npm run build --if-present
+          cache: 'pnpm'
+      - run: pnpm i
+      - run: pnpm test
+      # - run: pnpm run coveralls --if-present
+      - run: pnpm run build --if-present

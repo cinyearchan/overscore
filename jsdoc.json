@@ -1,0 +1,13 @@
+{
+  "source": {
+    "include": ["packages/utils/src"],
+    "exclude": ["packages/cli"]
+  },
+  "opts": {
+    "template": "node_modules/minami",
+    "encoding": "utf8",
+    "destination": "./docs/",
+    "recurse": true,
+    "verbose": true
+  }
+}

@@ -1,3 +1,4 @@
 dist
 require.js
 *.ts
+docs
