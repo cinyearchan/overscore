@@ -6,10 +6,10 @@
  */
 export function throttle(method, delay = 500) {
   let timer
-  let args = arguments
   let start
   return function loop() {
     let self = this
+    let args = arguments
     let now = Date.now()
     if (!start) {
       start = now
@@ -18,11 +18,11 @@ export function throttle(method, delay = 500) {
       clearTimeout(timer)
     }
     if (now - start >= delay) {
-      method.apply(self, args)
+      method.apply(self, Array.prototype.slice.call(args))
       start = now
     } else {
       timer = setTimeout(function () {
-        loop.apply(self, args)
+        loop.apply(self, Array.prototype.slice.call(args))
       }, 50)
     }
   }

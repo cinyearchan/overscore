@@ -68,4 +68,31 @@ describe('loadjs', () => {
     const scriptNode = appendSpy.mock.calls[0][0]
     expect(scriptNode.src).not.toMatch(/\?t=\w+/) // Check if cache buster is not appended
   })
+
+  it('should set the script charset correctly', () => {
+    const src = 'https://example.com/script.js'
+    const success = () => {}
+    const error = () => {}
+    const option = { charset: 'UTF-8' }
+
+    const appendSpy = vi.spyOn(document.head, 'appendChild')
+    loadjs(src, success, error, option)
+
+    expect(appendSpy).toHaveBeenCalled()
+    const scriptNode = appendSpy.mock.calls[0][0]
+    expect(scriptNode.charset).toBe('UTF-8') // Check if charset is set correctly
+  })
+
+  it('should use the default charset if not provided', () => {
+    const src = 'https://example.com/script.js'
+    const success = () => {}
+    const error = () => {}
+
+    const appendSpy = vi.spyOn(document.head, 'appendChild')
+    loadjs(src, success, error)
+
+    expect(appendSpy).toHaveBeenCalled()
+    const scriptNode = appendSpy.mock.calls[0][0]
+    expect(scriptNode.charset).toBe(document.charset) // Check if default charset is used
+  })
 }, 5000)

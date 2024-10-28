@@ -12,17 +12,20 @@ export class Cookies {
    * @memberof Cookies
    */
   setCookie(name, value, day) {
-    console.log('setting' + value) // 修改为 value
+    // console.log('setting' + value) // 修改为 value
     if (Object.prototype.toString.call(value).slice(8, -1) === 'Object') {
+      let temp
       for (let i in value) {
         const oDate = new Date()
         oDate.setDate(oDate.getDate() + day)
-        document.cookie = i + '=' + value[i] + ';expires=' + oDate.toUTCString() // 添加 toUTCString() 方法
+        temp += i + '=' + value[i] + ';expires=' + oDate.toUTCString() // 添加 toUTCString() 方法
       }
+      document.cookie = temp
     } else {
       const oDate = new Date()
       oDate.setDate(oDate.getDate() + day)
-      document.cookie = name + '=' + value + ';expires=' + oDate.toUTCString() // 添加 toUTCString() 方法
+      document.cookie =
+        name + '=' + value + (day >= 0 ? ';expires=' + oDate.toUTCString() : '') // 添加 toUTCString() 方法
     }
   }
 

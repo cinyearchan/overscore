@@ -193,7 +193,7 @@ describe('set', function () {
     // array key
     const obj2 = {}
     expect(set(obj2, 'a:array.0.b', 1)).to.equal(true)
-    console.log(obj2)
+    // console.log(obj2)
     expect(get(obj2, 'a:array.0.b', 1)).to.equal(1)
 
     const obj3 = {}

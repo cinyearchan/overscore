@@ -1,7 +1,7 @@
 export class Storage {
   constructor() {
-    this.ls = window.localStorage
-    this.ss = window.sessionStorage
+    this.ls = localStorage
+    this.ss = sessionStorage
   }
 
   /*-----------------localStorage---------------------*/

@@ -6,6 +6,10 @@
     "packages/*"
   ],
   "scripts": {
+    "create:package": "node ./scripts/create-package.cjs",
+    "list:packages": "node ./scripts/list-packages.cjs",
+    "remove:package": "node ./scripts/remove-package.cjs",
+    "bootstrap": "node ./scripts/bootstrap.cjs",
     "clean": "pnpm --filter \"./packages/*\" clean",
     "clean:module": "pnpm --filter \"./packages/*\" clean:module",
     "build": "pnpm --filter \"./packages/*\" build",
@@ -20,7 +24,10 @@
     "ci": "commit",
     "cz": "git-cz",
     "prepare": "husky install",
-    "doc": "jsdoc -c jsdoc.json"
+    "doc": "jsdoc -c jsdoc.json",
+    "change": "pnpm changeset",
+    "change:version": "pnpm changeset version",
+    "change:publish": "pnpm changeset publish"
   },
   "keywords": [],
   "author": "",
@@ -47,7 +54,7 @@
     "@vitest/coverage-v8": "2.1.3",
     "babel-plugin-istanbul": "^6.1.1",
     "babel-plugin-transform-runtime": "6.23.0",
-    "cdkit": "1.1.0",
+    "changesets": "^1.0.2",
     "commitizen": "^4.2.4",
     "cross-env": "^7.0.3",
     "es5-shim": "^4.6.7",

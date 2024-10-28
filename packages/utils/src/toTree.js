@@ -7,6 +7,7 @@
  */
 export function toTree(data, parentIdKey, idKey = 'id') {
   let _idMap = Object.create(null)
+  let seen = new Set() // 用于跟踪已处理的节点
 
   data.forEach((row) => {
     _idMap[row[idKey]] = row
@@ -14,12 +15,17 @@ export function toTree(data, parentIdKey, idKey = 'id') {
   const result = []
 
   data.forEach((row) => {
+    if (seen.has(row[idKey])) {
+      return // 如果已经处理过，跳过
+    }
     let parent = _idMap[row[parentIdKey]]
     if (parent) {
       let v = parent.children || (parent.children = [])
       v.push(row)
+      seen.add(row[idKey]) // 标记为已处理
     } else {
       result.push(row)
+      seen.add(row[idKey]) // 标记为已处理
     }
   })
   return result
