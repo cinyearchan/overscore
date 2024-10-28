@@ -23,7 +23,7 @@
     "coverage": "vitest run --coverage",
     "ci": "commit",
     "cz": "git-cz",
-    "prepare": "husky install",
+    "prepare": "husky",
     "doc": "jsdoc -c jsdoc.json",
     "change": "pnpm changeset",
     "change:version": "pnpm changeset version",
